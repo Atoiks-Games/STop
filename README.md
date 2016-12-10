@@ -1,3 +1,3 @@
-# simple-top-down-fps
+#STop
 
-A very very very simple top down fps
+A Top down shooter game

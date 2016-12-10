@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2project>
-    <name>Sample Top Down FPS</name>
-    <description>A very very very simple top down fps game</description>
+    <name>STop</name>
+    <description>Top down shooter game</description>
     <version>0.1.0</version>
     <author>Plankp</author>
     <author-email>plankp@outlook.com</author-email>
-    <author-website>http://</author-website>
-    <app-id>com.atoiks.games.sample.tdfps</app-id>
+    <author-website>http://atoiks-games.github.io</author-website>
+    <app-id>com.atoiks.games.stop</app-id>
     <unique-id>2m2oqhlgof90t</unique-id>
-    <saved-with-version>22700</saved-with-version>
+    <saved-with-version>23900</saved-with-version>
     <used-plugins>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
