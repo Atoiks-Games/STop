@@ -73,7 +73,7 @@
         <event-block sid="2980863450021948">
             <conditions>
                 <condition id="2" name="Key is down" sid="4553484769403926" type="Keyboard">
-                    <param id="0" name="Key">68 (D)</param>
+                    <param id="0" name="Key">68</param>
                 </condition>
             </conditions>
             <actions>
@@ -85,7 +85,7 @@
         <event-block sid="5309113404346108">
             <conditions>
                 <condition id="2" name="Key is down" sid="1996610858952229" type="Keyboard">
-                    <param id="0" name="Key">65 (A)</param>
+                    <param id="0" name="Key">65</param>
                 </condition>
             </conditions>
             <actions>
@@ -97,7 +97,7 @@
         <event-block sid="8271704254391317">
             <conditions>
                 <condition id="2" name="Key is down" sid="5133396727908594" type="Keyboard">
-                    <param id="0" name="Key">87 (W)</param>
+                    <param id="0" name="Key">87</param>
                 </condition>
             </conditions>
             <actions>
@@ -109,7 +109,7 @@
         <event-block sid="2471978634405202">
             <conditions>
                 <condition id="2" name="Key is down" sid="7942071905753445" type="Keyboard">
-                    <param id="0" name="Key">83 (S)</param>
+                    <param id="0" name="Key">83</param>
                 </condition>
             </conditions>
             <actions>
