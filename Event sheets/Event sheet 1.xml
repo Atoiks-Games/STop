@@ -3,16 +3,17 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Event sheet 1</name>
     <events>
+        <variable comment="time between spawning" constant="0" name="Wtime" sid="244952402953391" static="0" type="number">10</variable>
         <event-block sid="5730977135562479">
             <conditions>
                 <condition id="-2" name="On start of layout" sid="6018126473381012" type="System" />
             </conditions>
             <actions>
-                <action behavior="Pathfinding" id="5" name="Add obstacle" sid="7149142640745994" type="Mob">
+                <action behavior="Pathfinding" id="5" name="Add obstacle" sid="7149142640745994" type="Mob1">
                     <param id="0" name="Obstacle">Wall</param>
                 </action>
-                <action behavior="Pathfinding" id="4" name="Regenerate obstacle map" sid="2734603979273589" type="Mob" />
-                <action behavior="Pathfinding" id="0" name="Find path" sid="7593339667649604" type="Mob">
+                <action behavior="Pathfinding" id="4" name="Regenerate obstacle map" sid="2734603979273589" type="Mob1" />
+                <action behavior="Pathfinding" id="0" name="Find path" sid="7593339667649604" type="Mob1">
                     <param id="0" name="X">Bob.X</param>
                     <param id="1" name="Y">Bob.Y</param>
                 </action>
@@ -20,27 +21,25 @@
         </event-block>
         <event-block sid="94408046263143">
             <conditions>
-                <condition behavior="Pathfinding" id="0" name="On path found" sid="9022245492164233" type="Mob" />
-                <condition id="-9" name="Is visible" sid="4500996487227125" type="Mob" />
+                <condition behavior="Pathfinding" id="0" name="On path found" sid="9022245492164233" type="Mob1" />
             </conditions>
             <actions>
-                <action behavior="Pathfinding" id="1" name="Move along path" sid="2806806981859964" type="Mob" />
+                <action behavior="Pathfinding" id="1" name="Move along path" sid="2806806981859964" type="Mob1" />
             </actions>
         </event-block>
         <event-block sid="964448788662733">
             <conditions>
-                <condition behavior="Pathfinding" id="5" name="On arrived" sid="4550481120110629" type="Mob" />
-                <condition id="-9" name="Is visible" sid="511252717785214" type="Mob" />
+                <condition behavior="Pathfinding" id="5" name="On arrived" sid="4550481120110629" type="Mob1" />
             </conditions>
             <actions>
-                <action behavior="Pathfinding" id="5" name="Add obstacle" sid="2009691360042637" type="Mob">
+                <action behavior="Pathfinding" id="5" name="Add obstacle" sid="2009691360042637" type="Mob1">
                     <param id="0" name="Obstacle">Wall</param>
                 </action>
-                <action behavior="Pathfinding" id="5" name="Add obstacle" sid="8786009801842376" type="Mob">
-                    <param id="0" name="Obstacle">Mob</param>
+                <action behavior="Pathfinding" id="5" name="Add obstacle" sid="8786009801842376" type="Mob1">
+                    <param id="0" name="Obstacle">Mob1</param>
                 </action>
-                <action behavior="Pathfinding" id="4" name="Regenerate obstacle map" sid="6638873390610681" type="Mob" />
-                <action behavior="Pathfinding" id="0" name="Find path" sid="5857284555743943" type="Mob">
+                <action behavior="Pathfinding" id="4" name="Regenerate obstacle map" sid="6638873390610681" type="Mob1" />
+                <action behavior="Pathfinding" id="0" name="Find path" sid="5857284555743943" type="Mob1">
                     <param id="0" name="X">Bob.X</param>
                     <param id="1" name="Y">Bob.Y</param>
                 </action>
@@ -48,14 +47,25 @@
         </event-block>
         <event-block sid="6199001257235779">
             <conditions>
-                <condition id="0" name="On collision with another object" sid="1942681159625716" type="Mob">
+                <condition id="0" name="On collision with another object" sid="1942681159625716" type="Mob1">
                     <param id="0" name="Object">Bob</param>
                 </condition>
-                <condition id="-9" name="Is visible" sid="7797342532192687" type="Mob" />
             </conditions>
             <actions>
-                <action id="-43" name="Go to next/previous layout" sid="6410985732210531" type="System">
-                    <param id="0" name="Which">0</param>
+                <action id="-2" name="Go to layout" sid="6410985732210531" type="System">
+                    <param id="0" name="Layout">Gameover</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="678955246629783">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="855751520688808" type="Mob2">
+                    <param id="0" name="Object">Bob</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="345954366780153" type="System">
+                    <param id="0" name="Layout">Gameover</param>
                 </action>
             </actions>
         </event-block>
@@ -181,48 +191,87 @@
         <event-block sid="5532828411514539">
             <conditions>
                 <condition id="0" name="On collision with another object" sid="8884582022631626" type="Laser">
-                    <param id="0" name="Object">Mob</param>
+                    <param id="0" name="Object">Mob1</param>
                 </condition>
             </conditions>
             <actions>
                 <action id="-9" name="Destroy" sid="1351342725844854" type="Laser" />
-                <action id="-15" name="Set visible" sid="8779751430192085" type="Mob">
-                    <param id="0" name="Visibility">0</param>
+                <action id="-9" name="Destroy" sid="2511098591657625" type="Mob1" />
+            </actions>
+        </event-block>
+        <event-block sid="232163019152501">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="453321867545605" type="Laser">
+                    <param id="0" name="Object">Mob2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="759710568488223" type="Laser" />
+                <action behavior="Pathfinding" id="2" name="Stop" sid="104824027712483" type="Mob2" />
+                <action id="-16" name="Wait" sid="425484506961713" type="System">
+                    <param id="0" name="Seconds">1.0</param>
                 </action>
-                <action id="-16" name="Wait" sid="7850113106863484" type="System">
-                    <param id="0" name="Seconds">2</param>
-                </action>
-                <action id="0" name="Spawn another object" sid="738309525626923" type="Mob">
-                    <param id="0" name="Object">Mob</param>
-                    <param id="1" name="Layer">0</param>
-                    <param id="2" name="Image point">0</param>
-                </action>
-                <action id="-16" name="Wait" sid="94520154764574" type="System">
-                    <param id="0" name="Seconds">0.5</param>
-                </action>
-                <action id="0" name="Spawn another object" sid="1410111263419544" type="Mob">
-                    <param id="0" name="Object">Mob</param>
-                    <param id="1" name="Layer">0</param>
-                    <param id="2" name="Image point">0</param>
-                </action>
-                <action id="-9" name="Destroy" sid="2511098591657625" type="Mob" />
+                <action behavior="Pathfinding" id="1" name="Move along path" sid="295265533151045" type="Mob2" />
             </actions>
         </event-block>
         <event-block sid="2859838967707062">
             <conditions>
-                <condition id="-18" name="On created" sid="9904279104037866" type="Mob" />
+                <condition id="-18" name="On created" sid="9904279104037866" type="Mob1" />
             </conditions>
             <actions>
-                <action behavior="Pathfinding" id="5" name="Add obstacle" sid="3573743003100046" type="Mob">
+                <action behavior="Pathfinding" id="5" name="Add obstacle" sid="3573743003100046" type="Mob1">
                     <param id="0" name="Obstacle">Wall</param>
                 </action>
-                <action behavior="Pathfinding" id="5" name="Add obstacle" sid="4442267838249198" type="Mob">
-                    <param id="0" name="Obstacle">Mob</param>
+                <action behavior="Pathfinding" id="5" name="Add obstacle" sid="4442267838249198" type="Mob1">
+                    <param id="0" name="Obstacle">Mob1</param>
                 </action>
-                <action behavior="Pathfinding" id="4" name="Regenerate obstacle map" sid="1151219259628376" type="Mob" />
-                <action behavior="Pathfinding" id="0" name="Find path" sid="6641002642095227" type="Mob">
+                <action behavior="Pathfinding" id="4" name="Regenerate obstacle map" sid="1151219259628376" type="Mob1" />
+                <action behavior="Pathfinding" id="0" name="Find path" sid="6641002642095227" type="Mob1">
                     <param id="0" name="X">Bob.X</param>
                     <param id="1" name="Y">Bob.Y</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="298226576883374">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="934186044448802" type="System">
+                    <param id="0" name="Interval (seconds)">Wtime</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="394010099142650" type="Sprite">
+                    <param id="0" name="Object">Mob1</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <variable constant="0" name="KeyCount" sid="123206472543375" static="0" type="number">0</variable>
+        <event-block sid="849146265760221">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="974017689950177" type="key">
+                    <param id="0" name="Object">Bob</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" sid="773286430808369" type="System">
+                    <param id="0" name="Variable">KeyCount</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-9" name="Destroy" sid="328704227702040" type="key" />
+            </actions>
+        </event-block>
+        <event-block sid="107227857289497">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="484465951942150" type="System">
+                    <param id="0" name="Variable">KeyCount</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Value">3</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-43" name="Go to next/previous layout" sid="551025254197311" type="System">
+                    <param id="0" name="Which">0</param>
                 </action>
             </actions>
         </event-block>
