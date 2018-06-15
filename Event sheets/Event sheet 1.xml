@@ -17,6 +17,21 @@
                     <param id="0" name="X">Bob.X</param>
                     <param id="1" name="Y">Bob.Y</param>
                 </action>
+                <action id="-9" name="Set value" sid="438661409103566" type="System">
+                    <param id="0" name="Variable">KeyCount</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action behavior="Pathfinding" id="5" name="Add obstacle" sid="998874585845563" type="Mob2">
+                    <param id="0" name="Obstacle">Wall</param>
+                </action>
+                <action behavior="Pathfinding" id="4" name="Regenerate obstacle map" sid="737894088330971" type="Mob2" />
+                <action behavior="Pathfinding" id="0" name="Find path" sid="895660323241685" type="Mob2">
+                    <param id="0" name="X">Bob.X</param>
+                    <param id="1" name="Y">Bob.Y</param>
+                </action>
+                <action behavior="Turret" id="0" name="Acquire target" sid="948661704175448" type="turret">
+                    <param id="0" name="Target">Bob</param>
+                </action>
             </actions>
         </event-block>
         <event-block sid="94408046263143">
@@ -40,6 +55,32 @@
                 </action>
                 <action behavior="Pathfinding" id="4" name="Regenerate obstacle map" sid="6638873390610681" type="Mob1" />
                 <action behavior="Pathfinding" id="0" name="Find path" sid="5857284555743943" type="Mob1">
+                    <param id="0" name="X">Bob.X</param>
+                    <param id="1" name="Y">Bob.Y</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="951416661652563">
+            <conditions>
+                <condition behavior="Pathfinding" id="0" name="On path found" sid="729466743688909" type="Mob2" />
+            </conditions>
+            <actions>
+                <action behavior="Pathfinding" id="1" name="Move along path" sid="144776363884963" type="Mob2" />
+            </actions>
+        </event-block>
+        <event-block sid="540564664962642">
+            <conditions>
+                <condition behavior="Pathfinding" id="5" name="On arrived" sid="682086210112620" type="Mob2" />
+            </conditions>
+            <actions>
+                <action behavior="Pathfinding" id="5" name="Add obstacle" sid="236372144470461" type="Mob2">
+                    <param id="0" name="Obstacle">Wall</param>
+                </action>
+                <action behavior="Pathfinding" id="5" name="Add obstacle" sid="758224564662310" type="Mob2">
+                    <param id="0" name="Obstacle">Mob2</param>
+                </action>
+                <action behavior="Pathfinding" id="4" name="Regenerate obstacle map" sid="304059531540249" type="Mob2" />
+                <action behavior="Pathfinding" id="0" name="Find path" sid="540412745947176" type="Mob2">
                     <param id="0" name="X">Bob.X</param>
                     <param id="1" name="Y">Bob.Y</param>
                 </action>
@@ -166,6 +207,20 @@
                 </action>
             </actions>
         </event-block>
+        <event-block sid="105727447389770">
+            <conditions>
+                <condition id="-18" name="On created" sid="247387718757175" type="Laser2" />
+            </conditions>
+            <actions>
+                <action id="-22" name="Set angle toward position" sid="619760758760472" type="Laser2">
+                    <param id="0" name="X">turret.X</param>
+                    <param id="1" name="Y">turret.Y</param>
+                </action>
+                <action id="-8" name="Set angle" sid="237208815445635" type="Laser2">
+                    <param id="0" name="Angle">turret.Angle</param>
+                </action>
+            </actions>
+        </event-block>
         <event-block sid="2836353037486905">
             <conditions>
                 <condition id="-11" name="For Each" sid="6168905303867817" type="System">
@@ -186,6 +241,16 @@
             </conditions>
             <actions>
                 <action id="-9" name="Destroy" sid="2453260613587268" type="Laser" />
+            </actions>
+        </event-block>
+        <event-block sid="782839333557894">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="168971738866690" type="Laser2">
+                    <param id="0" name="Object">Wall</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="257694743401017" type="Laser2" />
             </actions>
         </event-block>
         <event-block sid="5532828411514539">
@@ -209,9 +274,33 @@
                 <action id="-9" name="Destroy" sid="759710568488223" type="Laser" />
                 <action behavior="Pathfinding" id="2" name="Stop" sid="104824027712483" type="Mob2" />
                 <action id="-16" name="Wait" sid="425484506961713" type="System">
-                    <param id="0" name="Seconds">1.0</param>
+                    <param id="0" name="Seconds">5.0</param>
                 </action>
                 <action behavior="Pathfinding" id="1" name="Move along path" sid="295265533151045" type="Mob2" />
+            </actions>
+        </event-block>
+        <event-block sid="573384444598401">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="853196155172230" type="Laser2">
+                    <param id="0" name="Object">Mob2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="170861345328945" type="Laser2" />
+                <action id="-9" name="Destroy" sid="770174008918117" type="Mob2" />
+            </actions>
+        </event-block>
+        <event-block sid="987050505498544">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="708825582807348" type="Laser2">
+                    <param id="0" name="Object">Bob</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="413460516109557" type="Laser2" />
+                <action id="-2" name="Go to layout" sid="128476943653016" type="System">
+                    <param id="0" name="Layout">Gameover</param>
+                </action>
             </actions>
         </event-block>
         <event-block sid="2859838967707062">
@@ -227,6 +316,24 @@
                 </action>
                 <action behavior="Pathfinding" id="4" name="Regenerate obstacle map" sid="1151219259628376" type="Mob1" />
                 <action behavior="Pathfinding" id="0" name="Find path" sid="6641002642095227" type="Mob1">
+                    <param id="0" name="X">Bob.X</param>
+                    <param id="1" name="Y">Bob.Y</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="510434719047988">
+            <conditions>
+                <condition id="-18" name="On created" sid="290828290297809" type="Mob2" />
+            </conditions>
+            <actions>
+                <action behavior="Pathfinding" id="5" name="Add obstacle" sid="572110293031111" type="Mob2">
+                    <param id="0" name="Obstacle">Wall</param>
+                </action>
+                <action behavior="Pathfinding" id="5" name="Add obstacle" sid="614042951170914" type="Mob2">
+                    <param id="0" name="Obstacle">Mob2</param>
+                </action>
+                <action behavior="Pathfinding" id="4" name="Regenerate obstacle map" sid="896529549576588" type="Mob2" />
+                <action behavior="Pathfinding" id="0" name="Find path" sid="467997274781425" type="Mob2">
                     <param id="0" name="X">Bob.X</param>
                     <param id="1" name="Y">Bob.Y</param>
                 </action>
@@ -272,6 +379,40 @@
             <actions>
                 <action id="-43" name="Go to next/previous layout" sid="551025254197311" type="System">
                     <param id="0" name="Which">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="230626215680532">
+            <conditions>
+                <condition behavior="Turret" id="1" name="On shoot" sid="291610651422638" type="turret" />
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="623505841350051" type="turret">
+                    <param id="0" name="Object">Laser2</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="626797325329267">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="895713150589305" type="Laser">
+                    <param id="0" name="Object">turret</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="737708832346652" type="Laser" />
+            </actions>
+        </event-block>
+        <event-block sid="876970195704874">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="764725624218793" type="Laser2">
+                    <param id="0" name="Object">Mob1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Bullet" id="4" name="Bounce off object" sid="576906345047553" type="Laser2">
+                    <param id="0" name="Object">Mob1</param>
                 </action>
             </actions>
         </event-block>
